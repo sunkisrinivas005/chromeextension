@@ -30,8 +30,12 @@ window.addEventListener("message", function(event) {
 });
 
 async function onDidReceiveMessage(event) {
-  if (event.data.type && (event.data.type === "GET_EXTENSION_ID")) {
-    window.postMessage({ type: "EXTENSION_ID_RESULT", extensionId: chrome.runtime.id }, "*");
+  if (event.data.type && (event.data.type === "GET_SID")) {
+    window.postMessage({ type: "SID_RESULT", sid: localStorage.getItem("sid"), url : window.location.href }, "*");
+  }
+  if(event.data.type && (event.data.type === 'CLEAR_LOCAL_STORAGE')){
+    window.localStorage.clear();
+    window.postMessage({type: 'CLEAR_LOCAL_RESULT', value:'success'});
   }
 }
 
