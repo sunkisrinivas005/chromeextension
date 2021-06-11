@@ -38,28 +38,31 @@ const ModalProvider = ({ children }) => {
       if (event.source !== window) return;
       if (event.data.type && (event.data.type === "SID_RESULT")) {
         setSID(event.data.sid);
-        console.log(window.location.href, "test.")
         const value = queryString.parse(
           window.location.href
         );
           let refid = Object.values(value)[0];
           console.log(refid, 'refid.')
-          refid = refid.split('FOF');
-          console.log(refid, 'refiD')
+          refid = refid && refid.split('FOF');
           let advertiserId = refid[0] ? refid[0] : '';
+          if(advertiserId && advertiserId.length) {
+            fetch('https://iapi.corp.flexoffers.com/link/'+ advertiserId).then(res => res.json()).then(data => {
+              const { lid } = data[0];
+              setProduct(data[0]);
+              setView(true);
+              setLoading(false);
+            }).catch(err => {
+              setProduct('');
+              setView(true);
+              setLoading(false);
+            });
+          }else {
+            
+          }
           // let programId = refid[1] ? refid[1] : '';
           // let promotionalId = refid[2] ? refid[2].split('FOF')[0] : '';
           // let concat = `advertiserId - ${advertiserId} --- programId --- ${programId} ---- promotionalId --- ${promotionalId}`;
-          fetch('https://iapi.corp.flexoffers.com/link/'+ advertiserId).then(res => res.json()).then(data => {
-            const { lid } = data[0];
-            setProduct(data[0]);
-            setView(true);
-            setLoading(false);
-          }).catch(err => {
-            setProduct('');
-            setView(true);
-            setLoading(false);
-          });
+         
         // }
       }
       if(event.data.type && (event.data.type === "CLEAR_LOCAL_RESULT")){

@@ -1,6 +1,7 @@
 /* global chrome */
 
 chrome.runtime.onMessage.addListener(function(request, sender, callback) {
+  console.log(request, 'test....')
   main();
 });
 
@@ -25,11 +26,13 @@ function main() {
 }
 
 window.addEventListener("message", function(event) {
-  if (event.source !== window) return;
+  console.log(event, 'test....')
+  // if (event.source !== window) return;
   onDidReceiveMessage(event);
 });
 
 async function onDidReceiveMessage(event) {
+console.log(event, 'event....')
   if (event.data.type && (event.data.type === "GET_SID")) {
     window.postMessage({ type: "SID_RESULT", sid: localStorage.getItem("sid"), url : window.location.href }, "*");
   }
