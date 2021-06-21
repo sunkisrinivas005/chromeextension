@@ -5,12 +5,12 @@
   "version": "1.0.1",
   "homepage_url": "https://flexoffers.com",
   "icons": {
-    "16": "icon16.png",
-    "48": "icon48.png",
-    "128": "icon128.png"
+    "16": "flex16.png",
+    "48": "flex48.png",
+    "128": "flex128.png"
   },
   "browser_action": {
-    "default_icon": "favicon.png",
+    "default_icon": "flex48.png",
     "default_title": "Advertiser Tracking Tool"
   },
   "background": {
