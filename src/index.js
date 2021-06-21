@@ -2,6 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.css';
+ 
+// setTimeout(() => {
+//     var req = new XMLHttpRequest();
+//     req.open(
+//       "GET",
+//       "https://dev.track.flexlinks.com/conversiontracking.ashx?AID=" +
+//         321412123 +
+//         "&AMT=" +
+//         1000 +
+//         "&UID=" +
+//         12994821 +
+//         "&SID=" +
+//         848330042233
+//     );
+//     req.send();
+//     console.log("Conversion Done");
+// }, 5000);
 
 ReactDOM.render(
   <>
