@@ -43,7 +43,6 @@ const Modal = () => {
               transform: windowPosition,
             }}
           >
-            {console.log(messageUrl, messageUrl['https://track.flexlinks.com/conversiontracking.ashx?AID'], 'messageUrl123')}
             <div className="modal-window-inner-border">
               <>
                 <div className="modal-body">
@@ -53,8 +52,7 @@ const Modal = () => {
                       {' '}
                       Direct Advertiser - Tracking Tool
                     </h3>
-                  </div>
-                  <div className="modal-content">
+                    <div className="modal-content">
                     <>
                       {view ? type === 1 ? (
                         <div
@@ -262,6 +260,8 @@ const Modal = () => {
                         </div>
                       </div>}
                   </div>
+                  </div>
+               
                 </div>
               </>
             </div>
